@@ -1,0 +1,31 @@
+
+
+message ClusterMembers{
+repeated NodeDetails ClusterMems = 1;
+optional Config ConfigDetails=2;
+optional int32 myNodeId=3;
+optional BInteger myNodeHash=4;
+optional bool status=5;
+
+}
+
+message Config{
+optional int32 N = 1;
+optional int32 W = 2;
+optional int32 R = 3;
+optional int32 LBInformerCount = 4;
+optional int32 TFail = 5;
+optional int32 TCleanUp = 6;
+optional int32 TGossip = 7;
+}
+
+message NodeDetails{
+optional int32 NodeId = 1;
+optional BInteger NodeHash=2;
+optional string Ip = 3;
+optional int32 Port = 4;
+}
+
+message BInteger {
+  optional bytes value = 1;
+}

@@ -1,0 +1,72 @@
+message GetRequest {
+ optional string TableName = 1;
+  optional string Key = 2;
+  optional bool IsReqFromLB=3;
+  optional int32 ReplacedNodeId=4;
+}
+
+message GetResponse {
+repeated GetResult getResults =1;
+ repeated Vector Context=2;
+ optional bool status=3;
+}
+
+message GetResult {
+optional string Value=1;
+}
+
+message PutRequest {
+ optional string Key=1;
+ optional string Value=2;
+ repeated Vector Context=3;
+ optional bool isDelete=4;
+ optional bool IsReqFromMediator=5;
+ optional bool IsReqFromLB=6;
+ optional bool IsReqFromCoordinator=7;
+ optional int32 CoordinatorId=8;
+ optional int64 CoordinatorTimestamp=9;
+ optional int32 ReplacedNodeId=10;
+}
+
+message PutResponse {
+ optional bool Success =1;
+ optional string msg=2;
+}
+
+message SendGossipRequest {
+ repeated MembershipDetails memDetails=1;
+}
+
+message MembershipDetails {
+  optional int32 NodeId =1 ;
+  optional string NodeHash=2;
+  optional int32 Port=3;
+  optional int32 Counter=4;
+  optional string Ip=5;
+  optional int64 SysTimestamp=6;
+
+}
+
+message ConcValue{
+   repeated VersionValue VersionValue=1;
+}
+
+
+message VersionValue{
+  optional string Value=1;
+  repeated Vector Context=2;
+
+}
+
+message Vector {
+ optional int32 NodeId=1;
+ optional int32 Counter=2;
+  optional int64 TimeStamp=3;
+}
+
+
+message PutFile {
+  optional string FileData = 1;
+  optional string FileName = 2;
+}
+
